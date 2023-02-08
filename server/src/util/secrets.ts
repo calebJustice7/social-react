@@ -1,0 +1,1 @@
+export const MONGODB_URI = "mongodb+srv://admin:admin@cluster0.kdzfl.mongodb.net/social?retryWrites=true&w=majority";

@@ -1,0 +1,43 @@
+.login-wrapper {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.login-wrapper .bg-image {
+    flex: 0.55;
+    background-image: url('./../../assets/tech-image.jpeg');
+    background-size: cover;
+    height: 100vh;
+}
+
+.login-wrapper .form {
+    flex: 0.45;
+    padding-bottom: 50px;
+}
+
+.login-wrapper header {
+    margin-bottom: 30px;
+    font-size: 2em;
+}
+
+.login-wrapper .text-field {
+    margin-bottom: 35px;
+    width: 40%;
+    font-size: 1.2em;
+}
+
+.login-wrapper .no-account span {
+    color: rgb(63, 114, 176);
+    cursor: pointer;
+}
+
+.login-wrapper .buttons-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    width: 40%;
+    margin-bottom: 20px;
+}

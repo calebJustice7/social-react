@@ -1,0 +1,39 @@
+.homepage-wrapper {
+    height: 100vh;
+    width: 100vw;
+    overflow-y: scroll;
+}
+
+.homepage-wrapper header {
+    color: rgb(225, 224, 224);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 30px 24px 30px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.homepage-wrapper header div:first-child {
+    font-size: 1.1em;
+}
+
+.homepage-wrapper .posts-wrapper {
+    overflow-y: scroll;
+}
+
+.homepage-wrapper .left-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.profile-picture {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #747476;
+    margin-right: 15px;
+    border-radius: 50%;
+    object-fit: cover;
+}
