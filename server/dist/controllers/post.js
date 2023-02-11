@@ -33,6 +33,9 @@ function _fetchPosts() {
     return __awaiter(this, void 0, void 0, function* () {
         const posts = yield Post_1.Post.aggregate([
             {
+                $limit: 1500
+            },
+            {
                 $lookup: {
                     from: "users",
                     foreignField: "_id",
@@ -41,7 +44,10 @@ function _fetchPosts() {
                 }
             },
             {
-                $unwind: "$user"
+                $unwind: {
+                    path: "$user",
+                    // preserveNullAndEmptyArrays: true
+                }
             },
             {
                 $lookup: {
@@ -52,7 +58,10 @@ function _fetchPosts() {
                 }
             },
             {
-                $unwind: "$comments",
+                $unwind: {
+                    path: "$comments",
+                    preserveNullAndEmptyArrays: true
+                }
             },
             {
                 $lookup: {
@@ -63,17 +72,20 @@ function _fetchPosts() {
                 }
             },
             {
-                $unwind: "$comments.user"
+                $unwind: {
+                    path: "$comments.user",
+                    preserveNullAndEmptyArrays: true
+                }
             },
             {
                 $group: {
                     _id: "$_id",
+                    comments: { $push: "$comments" },
                     user: { $first: "$user" },
                     caption: { $first: "$caption" },
                     userId: { $first: "$userId" },
                     username: { $first: "$username" },
                     likes: { $first: "$likes" },
-                    comments: { $push: "$comments" },
                     createdAt: { $first: "$createdAt" },
                     imgUrl: { $first: "$imgUrl" }
                 }
@@ -82,8 +94,13 @@ function _fetchPosts() {
                 $sort: {
                     createdAt: -1
                 }
-            }
+            },
         ]);
+        posts.forEach(post => {
+            if (post.comments.length === 1 && !post.comments[0].userId) {
+                post.comments = [];
+            }
+        });
         return posts;
     });
 }

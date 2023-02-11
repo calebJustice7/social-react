@@ -25,6 +25,9 @@ async function _uploadImage(reqBody: UploadBody): Promise<boolean> {
 async function _fetchPosts(): Promise<Array<PostDocument>> {
     const posts = await Post.aggregate([
         {
+            $limit: 1500
+        },
+        {
             $lookup: {
                 from: "users",
                 foreignField: "_id",
@@ -33,7 +36,10 @@ async function _fetchPosts(): Promise<Array<PostDocument>> {
             }
         },
         {
-            $unwind: "$user"
+            $unwind: {
+                path: "$user",
+                // preserveNullAndEmptyArrays: true
+            }
         },
         {
             $lookup: {
@@ -44,7 +50,10 @@ async function _fetchPosts(): Promise<Array<PostDocument>> {
             }
         },
         {
-            $unwind: "$comments",
+            $unwind: {
+                path: "$comments",
+                preserveNullAndEmptyArrays: true
+            }
         },
         {
             $lookup: {
@@ -55,17 +64,20 @@ async function _fetchPosts(): Promise<Array<PostDocument>> {
             }
         },
         {
-            $unwind: "$comments.user"
+            $unwind: {
+                path: "$comments.user",
+                preserveNullAndEmptyArrays: true
+            }
         },
         {
             $group: {
                 _id: "$_id",
+                comments: {$push: "$comments"},
                 user: {$first: "$user"},
                 caption: {$first: "$caption"},
                 userId: {$first: "$userId"},
                 username: {$first: "$username"},
                 likes: {$first: "$likes"},
-                comments: {$push: "$comments"},
                 createdAt: {$first: "$createdAt"},
                 imgUrl: {$first: "$imgUrl"}
             }
@@ -74,9 +86,13 @@ async function _fetchPosts(): Promise<Array<PostDocument>> {
             $sort: {
                 createdAt: -1
             }
-        }
+        },
     ]);
-    
+    posts.forEach(post => {
+        if (post.comments.length === 1 && !post.comments[0].userId) {
+            post.comments = [];
+        }
+    });
     return posts;
 }
 
