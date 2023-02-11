@@ -1,0 +1,116 @@
+.comment-popup-wrapper .puller {
+    display: none;
+}
+
+.comment-popup-wrapper {
+    position: relative;
+}
+
+/* .comment-popup-wrapper .input-box {
+    display: flex;
+    align-items: center;
+    background-color: rgb(225, 226, 228);
+    padding: 2px;
+}
+.comment-popup-wrapper .input-box button {
+    font-size: .9em;
+    border: none;
+    cursor: pointer;
+    border-radius: 15px;
+    padding: 10px;
+    flex: 0.3;
+    background-color: #5d5e5f;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    color: white;
+} */
+
+.comment-popup-wrapper .input-box input {
+    font-size: .9em;
+    border: 1px solid rgb(217, 216, 216);
+    padding: 8px 10px;
+    border-radius: 6px;
+}
+
+.comment-popup-wrapper .input-box {
+    border-top: 1px solid rgb(188, 188, 188);
+    padding: 10px 0 8px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.comment-popup-wrapper .input-box div:first-child {
+    display: flex;
+    align-items: center;
+}
+
+.comment-popup-wrapper .input-box .profile-picture {
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;   
+}
+
+.comment-popup-wrapper .comments-wrapper {
+    max-height: 60vh;
+    padding-top: 20px;
+    overflow: scroll;
+}
+
+.comment-popup-wrapper .comment {
+    display: flex;
+    margin: 10px 0;
+    align-items: flex-start;
+    padding-right: 10px;
+    padding-left: 10px;
+    justify-content: flex-start;
+}
+
+.comment-popup-wrapper .comment .content div:first-child {
+    font-size: .85em;
+    font-weight: bold;
+}
+
+.comment-popup-wrapper .comment .content div:last-child {
+    font-size: .85em;
+}
+
+
+.comment-popup-wrapper .comment .profile {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.comment-popup-wrapper .comment .profile-picture {
+    width: 30px;
+    height: 30px;
+    margin-right: 7px;
+    border-radius: 50%;
+}
+
+.comment-popup-wrapper .comment .profile-picture img {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    width: 100%;
+}
+
+/* .comment-popup-wrapper .comment div:first-child { */
+    /* font-weight: bold; */
+    /* font-size: .8em; */
+/* } */
+
+@media only screen and (max-width: 1000px) {
+    .comment-popup-wrapper .puller {
+        display: block;
+        width: 60px;
+        height: 5px;
+        left: calc(50% - 20px);
+        top: 8px;
+        border-radius: 14px;
+        position: absolute;
+        background-color: rgb(100, 96, 96);
+    }
+}

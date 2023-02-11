@@ -1,0 +1,42 @@
+.header-wrapper .hamburger-button {
+    display: none;
+}
+
+.header-wrapper > header {
+    color: rgb(225, 224, 224);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 30px 24px 30px;
+}
+
+.header-wrapper header div:first-child {
+    font-size: 1.1em;
+}
+
+.header-wrapper .left-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.profile-picture {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #747476;
+    margin-right: 15px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+@media screen and (max-width: 900px) {
+    .header-wrapper .title {
+        display: none;
+    }
+    .header-wrapper .buttons-wrapper {
+        display: none;
+    }
+    .header-wrapper .hamburger-button {
+        display: block;
+    }
+}

@@ -1,4 +1,5 @@
 import User from "./User"
+import Comments from "./Comments";
 
 export default interface Posts {
     _id: string,
@@ -7,5 +8,7 @@ export default interface Posts {
     username: String
     userId: string,
     likes: Array<String>,
-    user: User
+    user: User,
+    createdAt: Date,
+    comments: Array<Comments>
 }

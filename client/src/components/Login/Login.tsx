@@ -6,7 +6,11 @@ import Signup from '../Signup/Signup';
 import axios from "./../../utils/axios";
 import {useNavigate} from "react-router-dom";
 
-function Login() {
+interface Props {
+  onLogin: Function
+}
+
+function Login(props: Props) {
 
   const [showLogin, setShowLogin] = useState<boolean>(true);
   const [error, setError] = useState<boolean>(false);
@@ -19,6 +23,7 @@ function Login() {
       localStorage.setItem('token', res.data.token);
       localStorage.setItem('uid', res.data.user._id);
       localStorage.setItem('username', res.data.user.username);
+      props.onLogin();
       navigate("/");
     }).catch(() => {
       setError(true);

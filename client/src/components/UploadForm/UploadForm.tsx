@@ -99,7 +99,7 @@ function UploadForm(props: Props) {
             </Box>
         </CardContent>
         <CardActions sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-          <Button onClick={savePost} size="small" variant="contained">Save</Button>
+          <Button disabled={success} onClick={savePost} size="small" variant="contained">Save</Button>
         </CardActions>
       </Card>
     </div>

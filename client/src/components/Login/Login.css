@@ -26,7 +26,7 @@
 
 .login-wrapper .text-field {
     margin-bottom: 35px;
-    width: 40%;
+    width: 50%;
     font-size: 1.2em;
 }
 
@@ -40,4 +40,41 @@
     justify-content: flex-end;
     width: 40%;
     margin-bottom: 20px;
+}
+
+@media screen and (max-width: 1300px) {
+    .login-wrapper .text-field {
+        width: 70%;
+    }
+
+    .login-wrapper .bg-image {
+        flex: 0.5;
+    }
+    .login-wrapper .form {
+        flex: 0.5;
+    }
+    
+}
+
+@media screen and (max-width: 750px) {
+    .login-wrapper .form {
+        flex: 0.9;
+        z-index: 2;
+        background-color: white;
+        padding: 16px 8px;
+        margin: 0 auto;
+        border-radius: 4px;
+    }
+
+    .login-wrapper .text-field {
+        width: 80%;
+    }
+
+    .login-wrapper .bg-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+    }
 }

@@ -6,6 +6,8 @@ import {useState, useEffect} from "react";
 import Login from './components/Login/Login';
 import User from "./types/User";
 import axios from "./utils/axios";
+import CommentPage from './components/CommentModal/CommentModal';
+import Header from "./components/Header/Header";
 
 export const ThemeCtx = React.createContext("theme");
 
@@ -38,9 +40,10 @@ function App() {
     <div className="App">
       <ThemeCtx.Provider value={selected ? "dark" : "light"}>
       <BrowserRouter>
+      {window.location.pathname !== '/signin' ? <Header updateUser={updateUser} user={user} setTheme={setTheme} /> : ''}
         <Routes>
-          <Route path="/" element={ <HomePage updateUser={updateUser} user={user} setTheme={setTheme} />} />
-          <Route path="/signin" element={ <Login /> } />
+          <Route path="/" element={ <HomePage user={user} />} />
+          <Route path="/signin" element={ <Login onLogin={getUser} /> } />
         </Routes>
       </BrowserRouter>
       </ThemeCtx.Provider>

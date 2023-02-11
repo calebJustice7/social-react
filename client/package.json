@@ -49,6 +49,7 @@
     ]
   },
   "devDependencies": {
-    "@types/axios": "^0.14.0"
+    "@types/axios": "^0.14.0",
+    "@types/jquery": "^3.5.16"
   }
 }

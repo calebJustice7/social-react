@@ -1,14 +1,8 @@
 import axios from "axios";
 import jwt_decode from "jwt-decode";
+import DecodedJwt from "./../types/DecodedJwt";
 
 import {AxiosRequestConfig} from "axios";
-
-interface DecodedJwt {
-  iat: number,
-  exp: number,
-  username: string,
-  id: string
-}
 
 let hostname = window.location.hostname;
 let url = "";
@@ -17,7 +11,6 @@ if (hostname === "localhost") {
 } else {
   url = "/";
 }
-console.log(hostname);
 
 let axiosInstance = axios.create({
   baseURL: url,
