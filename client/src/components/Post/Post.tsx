@@ -173,7 +173,7 @@ function Login(props: Props) {
                 <span style={{textAlign: 'left'}}>{props.post.caption}</span>
             </div>
             <div style={{display: 'flex', alignItems: 'center', justifyContent: 'flex-start'}}>
-              <span style={{textAlign: 'left', marginLeft: '9px', fontWeight: '700', marginTop: '0px', fontSize: '0.75em', marginBottom: '6px'}}>{props.post.comments && props.post.comments.length ? props.post.comments[props.post.comments.length - 1].user.username : ''}</span>
+              <span style={{textAlign: 'left', marginLeft: '9px', fontWeight: '700', marginTop: '0px', fontSize: '0.75em', marginBottom: '6px'}}>{props.post.comments && props.post.comments.length ? props.post.comments[props.post.comments.length - 1].user ? props.post.comments[props.post.comments.length - 1].user.username : '' : ''}</span>
               <span style={{textAlign: 'left', marginLeft: '9px', fontWeight: '400', marginTop: '0px', fontSize: '0.7em', marginBottom: '6px'}}>{props.post.comments && props.post.comments.length ? props.post.comments[props.post.comments.length - 1].comment : ''}</span>
             </div>
             <div onClick={commentPost} style={{textAlign: 'left', marginLeft: '9px', fontWeight: '400', marginTop: '0px', fontSize: '0.75em', marginBottom: '9px'}}>
