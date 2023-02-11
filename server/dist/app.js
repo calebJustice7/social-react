@@ -28,19 +28,18 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const mongoose_1 = __importDefault(require("mongoose"));
-const secrets_1 = require("./util/secrets");
+const secrets_1 = __importDefault(require("./util/secrets"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const cors_1 = __importDefault(require("cors"));
-// Create Express server
 const app = (0, express_1.default)();
-const mongoUrl = secrets_1.MONGODB_URI;
+const mongoUrl = secrets_1.default;
 const postRoute = __importStar(require("./controllers/post"));
 const userRoute = __importStar(require("./controllers/user"));
+const commentRoute = __importStar(require("./controllers/comments"));
 const unauthenticatedPaths = ["/api/login", "/api/signup"];
-mongoose_1.default.connect(mongoUrl).then(() => { }).catch(err => {
-    console.log(`MongoDB connection error. Please make sure MongoDB is running. ${err}`);
+mongoose_1.default.connect(mongoUrl).then(() => { console.log("Done"); }).catch(err => {
+    console.log(`MongoDB connection error. make sure MongoDB is running. ${err}`);
 });
-// Express configuration
 app.set("port", 4000);
 app.use((0, cors_1.default)());
 app.use(express_1.default.json({ limit: "50mb" }));
@@ -71,5 +70,9 @@ app.get("/api/user/:id", userRoute.getUser);
 app.post("/api/login", userRoute.login);
 app.post("/api/user/profile-picture", userRoute.setProfilePicture);
 app.post("/api/post/like", postRoute.likePost);
+app.delete("/api/post/:id", postRoute.deletePost);
+app.get("/api/post/:id", postRoute.getPost);
+app.post("/api/comment", commentRoute.addComment);
+app.get("/api/comment/:id", commentRoute.getComments);
 exports.default = app;
 //# sourceMappingURL=app.js.map

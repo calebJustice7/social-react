@@ -59,7 +59,7 @@ async function _authenticateUser(reqBody): Promise<AuthBody> {
             id: user._id,
             username: user.username
         };
-        const token = await jwt.sign(payload,"lsdjflajsd9420dlkaj;skdfsdfasfs90fwlkjflsadjlf;asf", {expiresIn: "60m"});
+        const token = await jwt.sign(payload,"lsdjflajsd9420dlkaj;skdfsdfasfs90fwlkjflsadjlf;asf", {expiresIn: "720m"});
         resBody = {
             user, 
             token: "Bearer token: " + token

@@ -62,7 +62,7 @@ function _authenticateUser(reqBody) {
                 id: user._id,
                 username: user.username
             };
-            const token = yield jsonwebtoken_1.default.sign(payload, "lsdjflajsd9420dlkaj;skdfsdfasfs90fwlkjflsadjlf;asf", { expiresIn: "60m" });
+            const token = yield jsonwebtoken_1.default.sign(payload, "lsdjflajsd9420dlkaj;skdfsdfasfs90fwlkjflsadjlf;asf", { expiresIn: "720m" });
             resBody = {
                 user,
                 token: "Bearer token: " + token
